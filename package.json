@@ -1,0 +1,19 @@
+{
+  "name": "sti-frontend",
+  "version": "1.0.0",
+  "description": "My First Frontend Application",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HelenaOstlund/sti-frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HelenaOstlund/sti-frontend/issues"
+  },
+  "homepage": "https://github.com/HelenaOstlund/sti-frontend#readme"
+}
