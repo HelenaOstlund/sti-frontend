@@ -259,7 +259,7 @@ const keys = {
 }
 
 function init() {
-    player = new Player()
+    //player = new Player()
     projectiles = []
     grids = []
     invaderProjectiles = []
@@ -270,7 +270,16 @@ function init() {
     
 }
 
+function restart() {
+    projectiles = []
+    grids = []
+    invaderProjectiles = []
 
+    score = 0
+    scoreEl.innerHTML =score
+    bigScoreEl.innerHTML = score
+    
+}
 
 let frames = 0
 let randomInterval = Math.floor(Math.random() * 500) + 500
@@ -371,7 +380,9 @@ function animate() {
 
             setTimeout(() => {
                game.active = false 
-            }, 2000) 
+           
+            }, 2000)
+
 
                 createParticles({
                 object: player,
@@ -528,5 +539,5 @@ addEventListener('keyup',({key}) => {
 startGameBtn.addEventListener('click', () => {
     animate()
     modalEl.style.display = 'none'
-    init()
+    player.restart()
 })
