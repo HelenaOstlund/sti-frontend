@@ -8,6 +8,14 @@ const bigScoreEl = document.querySelector('#bigScoreEl')
 canvas.width = 1024
 canvas.height = 576
 
+setTimeout(age, 3000)
+
+function age(){
+    console.log("Fetching highscore")
+
+    setTimeout(age, 3000)    
+}
+
 class Player {
     constructor() {
        this.velocity = {
@@ -537,7 +545,8 @@ addEventListener('keyup',({key}) => {
     
 })
 startGameBtn.addEventListener('click', () => {
+    
     animate()
     modalEl.style.display = 'none'
-    player.restart()
+    restart()
 })
