@@ -25,7 +25,8 @@ function updateHighscore() {
         let highscoreElement = document.getElementById("highscore")
 
         var xhr = new XMLHttpRequest()
-        xhr.open("GET", "/js/data.json")
+        //xhr.open("GET", "/js/data.json")
+        xhr.open("GET", "http://localhost:3001/highscore")
         xhr.onload = function(){
             let data = JSON.parse(this.response)
             highscoreElement.textContent = ""
@@ -48,8 +49,8 @@ function updateHighscore() {
 function createTable(data){
     let table = document.createElement("table")
 
-    for(row of data){
-        table.appendChild(createRow(row.name, row.score))
+    for(let row of data){
+        table.appendChild(addRow(row.name, row.score))
     }
     return table
     
