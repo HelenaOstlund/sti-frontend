@@ -28,7 +28,7 @@ function updateHighscore() {
         highscoreElement.textContent = ""
         highscoreElement.appendChild(headerElement)
 
-        let table = document.createElement(table)
+        let table = document.createElement("table")
         table.appendChild(addRow("Nissen", 2000))
         table.appendChild(addRow("Helena", 1500))
         table.appendChild(addRow("Ebba", 700))
