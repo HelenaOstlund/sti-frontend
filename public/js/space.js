@@ -29,7 +29,7 @@ function updateHighscore() {
         xhr.onload = function(){
             let data = JSON.parse(this.response)
             highscoreElement.textContent = ""
-            headerElement.appendChild(createTable(data))
+            highscoreElement.appendChild(createTable(data))
             setTimeout(age,UPDATE_INTERVAL)
         }
         xhr.send()
@@ -47,10 +47,12 @@ function updateHighscore() {
 
 function createTable(data){
     let table = document.createElement("table")
-    table.appendChild(addRow("Nissen", 2000))
-    table.appendChild(addRow("Helena", 1500))
-    table.appendChild(addRow("Ebba", 700))
+
+    for(row of data){
+        table.appendChild(createRow(data.name, data.score))
+    }
     return table
+    
 }
 
 function addRow(player, score){
