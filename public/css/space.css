@@ -17,13 +17,9 @@ p.highscore {
     font-family: sans-serif;
     font-size: 14px;
 }
-#highscore {
-    position: absolute;
-    z-index: 10;
-    color: white;
-    left: 10px;
-    top: 10px;
+td {
+   color: white;
     margin: 0;
     font-family: sans-serif;
-    font-size: 14px;
+    font-size: 36px;
 }

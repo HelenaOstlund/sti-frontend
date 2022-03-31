@@ -23,16 +23,19 @@ function updateHighscore() {
     if(game.over){
         console.log("game over")
         let highscoreElement = document.getElementById("highscore")
-        let headerElement = document.createElement("h1")
-        headerElement.innerHTML = "Table"
-        highscoreElement.textContent = ""
-        highscoreElement.appendChild(headerElement)
 
-        let table = document.createElement("table")
-        table.appendChild(addRow("Nissen", 2000))
-        table.appendChild(addRow("Helena", 1500))
-        table.appendChild(addRow("Ebba", 700))
-        headerElement.appendChild(table)
+        var xhr = new XMLHttpRequest()
+        xhr.open("GET", "/js/data.json")
+        xhr.onload = function(){
+            let data = JSON.parse(this.response)
+            highscoreElement.textContent = ""
+            headerElement.appendChild(createTable(data))
+            setTimeout(age,UPDATE_INTERVAL)
+        }
+        xhr.send()
+    
+        
+       
 
         //scoreEl.textContent = ""
         //scoreEl.appendChild(headerElement)
@@ -41,6 +44,15 @@ function updateHighscore() {
         bigScoreEl.innerHTML = score
     }
 }
+
+function createTable(data){
+    let table = document.createElement("table")
+    table.appendChild(addRow("Nissen", 2000))
+    table.appendChild(addRow("Helena", 1500))
+    table.appendChild(addRow("Ebba", 700))
+    return table
+}
+
 function addRow(player, score){
     let row = document.createElement("tr")
    
