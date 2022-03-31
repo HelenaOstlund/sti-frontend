@@ -1,0 +1,30 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Playfair Display';
+    background: rgb(60, 60, 104);
+
+}
+
+.img-container {
+    width: 60%;
+    height: 30em;
+    overflow: hidden;
+    margin: 10em auto;
+    position: relative;
+}
+
+.content {
+    width: 100%;
+    background: rgb(81,81, 143);
+    transform: translateY(0);
+    transition: transform 1s ease-in-out;
+}
+
+.content.hover {
+    transform: translateY(-430px);
+}
