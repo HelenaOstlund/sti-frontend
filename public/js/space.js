@@ -49,7 +49,7 @@ function createTable(data){
     let table = document.createElement("table")
 
     for(row of data){
-        table.appendChild(createRow(data.name, data.score))
+        table.appendChild(createRow(row.name, row.score))
     }
     return table
     
