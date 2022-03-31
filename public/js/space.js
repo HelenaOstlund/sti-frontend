@@ -19,13 +19,40 @@ const bigScoreEl = document.querySelector('#bigScoreEl')
 setTimeout(updateHighscore, UPDATE_INTERVAL)
 
 function updateHighscore() {
-    //console.log("Fetching highscore")
-    let highscoreElement = document.getElementById("highscore")
-    let headerElement = document.createElement("h1")
-    headerElement.innerHTML = "Table"
-    highscoreElement.textContent = ""
-    highscoreElement.appendChild(headerElement)
-    setTimeout(updateHighscore, UPDATE_INTERVAL)
+   // console.log(score)
+    if(game.over){
+        console.log("game over")
+        let highscoreElement = document.getElementById("highscore")
+        let headerElement = document.createElement("h1")
+        headerElement.innerHTML = "Table"
+        highscoreElement.textContent = ""
+        highscoreElement.appendChild(headerElement)
+
+        let table = document.createElement(table)
+        table.appendChild(addRow("Nissen", 2000))
+        table.appendChild(addRow("Helena", 1500))
+        table.appendChild(addRow("Ebba", 700))
+        headerElement.appendChild(table)
+
+        //scoreEl.textContent = ""
+        //scoreEl.appendChild(headerElement)
+    } else{
+        scoreEl.innerHTML = score
+        bigScoreEl.innerHTML = score
+    }
+}
+function addRow(player, score){
+    let row = document.createElement("tr")
+   
+    let playerCell = document.createElement("td")
+    playerCell.innerHTML = player
+    let scoreCell = document.createElement("td")
+    scoreCell.innerHTML = score
+   
+    row.appendChild(playerCell)
+    row.appendChild(scoreCell)
+    return row
+
 }
 
 let player = new Player(context, CANVAS_WIDTH, CANVAS_HEIGHT)
@@ -101,13 +128,15 @@ function animate() {
         // projectile hits player
         if(player.isHit(invaderProjectile)){
             console.log('you loose')
+          
             setTimeout(() => {
                 invaderProjectiles.splice(index, 1)
                 player.opacity = 0
                 game.over = true
+                updateHighscore()
             }, 0)
             setTimeout(() => {game.active = false}, 2000)
-            bigScoreEl.innerHTML = score
+            updateHighscore()
             setTimeout(() => {modalEl.style.display = 'flex'}, 2000)
         }
     })
@@ -157,7 +186,7 @@ function animate() {
                         // remove invader and projectile
                         if (invaderFound && projectileFound) {
                             score += 100
-                            scoreEl.innerHTML = score
+                            updateHighscore()
                             grid.invaders.splice(i, 1)
                             projectiles.splice(j, 1)
 
@@ -204,7 +233,7 @@ function restart() {
     invaderProjectiles = []
 
     score = 0
-    scoreEl.innerHTML = score
+    updateHighscore()
     bigScoreEl.innerHTML = score
     game.active = true
     game.over = false
